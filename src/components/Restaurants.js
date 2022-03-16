@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
+
 import Restaurant from './Restaurant';
 
 const Restaurants = ({ restaurants }) => {
@@ -8,7 +9,11 @@ const Restaurants = ({ restaurants }) => {
       {!restaurants ? (
         <h1>Loading...</h1>
       ) : (
-        <Restaurant restaurants={restaurants} />
+        <Row xs={1} sm={1} md={2} lg={3}>
+          {restaurants.data.map((restaurant) => (
+            <Restaurant key={restaurant.id} restaurant={restaurant} />
+          ))}
+        </Row>
       )}
     </Container>
   );
