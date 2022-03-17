@@ -11,10 +11,14 @@ const Home = () => {
     setLoading(true);
 
     axios
-      .get('http://localhost:1337/api/restaurants?populate=categories')
+      .get(
+        'http://localhost:1337/api/restaurants?populate=categories&fields=name,description,avgPrice'
+      )
       .then((res) => {
         setRestaurants(res.data);
         setLoading(false);
+
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
